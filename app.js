@@ -19,7 +19,12 @@ const PORT = 3001;
 app.use(cors());
 // app.options('*', cors());
 app.use(express.json());
-mongoose.connect('mongodb+srv://juanpipo03:prueba2020@cluster0.zvrnf7i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(() => {
+mongoose.connect('mongodb+srv://juanpipo03:prueba2020@cluster0.zvrnf7i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+    serverSelectionTimeoutMS: 30000,
+    bufferTimeoutMS: 30000,
+
+
+}).then(() => {
     console.log('Conectado a MongoDB');
 }).catch(err => {
     console.log('Error al conectar a MongoDB');
